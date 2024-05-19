@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  app:
+    container_name: pgadmin4
+    image: dpage/pgadmin4:8.6
+    restart: unless-stopped
+    ports:
+      - "8888:80"
+    environment:
+      TZ: "Asia/Jakarta"
+      PGADMIN_DEFAULT_EMAIL: username@email.com
+      PGADMIN_DEFAULT_PASSWORD: Password1234
+      # PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - /to/host/path/pgadmin:/var/lib/pgadmin
+
+networks:
+  default:
+    external: true
+    name: dev_net1

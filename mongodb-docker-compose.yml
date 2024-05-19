@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  db:
+    container_name: mongodb
+    image: mongodb/mongodb-community-server:7.0.9-ubuntu2204
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      TZ: "Asia/Jakarta"
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "Password1234"
+    volumes:
+      - /to/host/pathmongodb/data/db:/data/db
+      - /to/host/path/mongodb/data/configdb:/data/configdb
+
+networks:
+  default:
+    external: true
+    name: dev_net1

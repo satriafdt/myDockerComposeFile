@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  db:
+    container_name: microsoftsql
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    user: root
+    restart: unless-stopped
+    ports:
+      - "1433:1433"
+    environment:
+      TZ: "Asia/Jakarta"
+      MSSQL_SA_PASSWORD: "Password1234"
+      MSSQL_PID: "Developer"
+      ACCEPT_EULA: Y
+    volumes:
+      - /to/host/path/microsoftsql/data:/var/opt/mssql/data
+      - /to/host/path/microsoftsql/log:/var/opt/mssql/log
+
+networks:
+  default:
+    external: true
+    name: dev_net1
